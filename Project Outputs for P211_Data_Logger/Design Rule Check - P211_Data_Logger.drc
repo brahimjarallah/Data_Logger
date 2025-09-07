@@ -1,0 +1,153 @@
+Protel Design System Design Rule Check
+PCB File : Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc
+Date     : 9/7/2025
+Time     : 5:34:52 PM
+
+Processing Rule : Clearance Constraint (Gap=0.254mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.3mm) (Max=0.5mm) (Preferred=0.3mm) (All)
+   Violation between Width Constraint: Track (31.623mm,54.356mm)(31.623mm,77.373mm) on BL Actual Width = 0.254mm, Target Width = 0.3mm
+   Violation between Width Constraint: Track (31.623mm,77.373mm)(36.5mm,82.25mm) on BL Actual Width = 0.254mm, Target Width = 0.3mm
+   Violation between Width Constraint: Track (36.5mm,82.25mm)(62.25mm,82.25mm) on BL Actual Width = 0.254mm, Target Width = 0.3mm
+   Violation between Width Constraint: Track (40.323mm,86.233mm)(40.323mm,90.354mm) on TL Actual Width = 0.254mm, Target Width = 0.3mm
+   Violation between Width Constraint: Track (40.323mm,90.354mm)(40.395mm,90.426mm) on TL Actual Width = 0.254mm, Target Width = 0.3mm
+   Violation between Width Constraint: Track (47.006mm,43.437mm)(47.006mm,43.688mm) on TL Actual Width = 0.254mm, Target Width = 0.3mm
+   Violation between Width Constraint: Track (47.006mm,43.437mm)(47.44mm,43.003mm) on TL Actual Width = 0.254mm, Target Width = 0.3mm
+   Violation between Width Constraint: Track (47.44mm,40.64mm)(47.44mm,43.003mm) on TL Actual Width = 0.254mm, Target Width = 0.3mm
+   Violation between Width Constraint: Track (47.44mm,40.64mm)(47.469mm,40.611mm) on TL Actual Width = 0.254mm, Target Width = 0.3mm
+   Violation between Width Constraint: Track (47.469mm,37.973mm)(47.469mm,40.611mm) on TL Actual Width = 0.254mm, Target Width = 0.3mm
+   Violation between Width Constraint: Track (52.578mm,66.151mm)(52.578mm,70.231mm) on TL Actual Width = 0.254mm, Target Width = 0.3mm
+   Violation between Width Constraint: Track (52.578mm,70.231mm)(52.578mm,70.231mm) on TL Actual Width = 0.254mm, Target Width = 0.3mm
+   Violation between Width Constraint: Track (62.25mm,82.25mm)(63.255mm,83.255mm) on BL Actual Width = 0.254mm, Target Width = 0.3mm
+   Violation between Width Constraint: Track (63.255mm,83.255mm)(63.255mm,90.426mm) on BL Actual Width = 0.254mm, Target Width = 0.3mm
+Rule Violations :14
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)
+Rule Violations :0
+
+Processing Rule : Pads and Vias to follow the Drill pairs settings
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=0.3mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)
+   Violation between Silk To Solder Mask Clearance Constraint: (0.202mm < 0.254mm) Between Arc (62.5mm,23.99mm) on TO And Pad D2-1(62.5mm,22.75mm) on Multi-Layer [TO] to [TS] clearance [0.202mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.202mm < 0.254mm) Between Arc (62.5mm,23.99mm) on TO And Pad D2-1(62.5mm,22.75mm) on Multi-Layer [TO] to [TS] clearance [0.202mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.202mm < 0.254mm) Between Arc (88.75mm,27.51mm) on TO And Pad D1-1(88.75mm,28.75mm) on Multi-Layer [TO] to [TS] clearance [0.202mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.202mm < 0.254mm) Between Arc (88.75mm,27.51mm) on TO And Pad D1-1(88.75mm,28.75mm) on Multi-Layer [TO] to [TS] clearance [0.202mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.125mm < 0.254mm) Between Pad C1-1(42.148mm,40.894mm) on TL And Track (41.648mm,40.094mm)(42.648mm,40.094mm) on TO [TO] to [TS] clearance [0.125mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.125mm < 0.254mm) Between Pad C1-1(42.148mm,40.894mm) on TL And Track (41.648mm,41.694mm)(42.648mm,41.694mm) on TO [TO] to [TS] clearance [0.125mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.15mm < 0.254mm) Between Pad C1-1(42.148mm,40.894mm) on TL And Track (42.648mm,40.094mm)(42.648mm,41.694mm) on TO [TO] to [TS] clearance [0.15mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.15mm < 0.254mm) Between Pad C1-2(40.148mm,40.894mm) on TL And Track (39.648mm,40.094mm)(39.648mm,41.694mm) on TO [TO] to [TS] clearance [0.15mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.125mm < 0.254mm) Between Pad C1-2(40.148mm,40.894mm) on TL And Track (39.648mm,40.094mm)(40.648mm,40.094mm) on TO [TO] to [TS] clearance [0.125mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.125mm < 0.254mm) Between Pad C1-2(40.148mm,40.894mm) on TL And Track (39.648mm,41.694mm)(40.648mm,41.694mm) on TO [TO] to [TS] clearance [0.125mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.125mm < 0.254mm) Between Pad C2-1(40.513mm,68.31mm) on TL And Track (39.713mm,67.81mm)(39.713mm,68.81mm) on TO [TO] to [TS] clearance [0.125mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.15mm < 0.254mm) Between Pad C2-1(40.513mm,68.31mm) on TL And Track (39.713mm,68.81mm)(41.313mm,68.81mm) on TO [TO] to [TS] clearance [0.15mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.125mm < 0.254mm) Between Pad C2-1(40.513mm,68.31mm) on TL And Track (41.313mm,67.81mm)(41.313mm,68.81mm) on TO [TO] to [TS] clearance [0.125mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.125mm < 0.254mm) Between Pad C2-2(40.513mm,66.31mm) on TL And Track (39.713mm,65.81mm)(39.713mm,66.81mm) on TO [TO] to [TS] clearance [0.125mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.15mm < 0.254mm) Between Pad C2-2(40.513mm,66.31mm) on TL And Track (39.713mm,65.81mm)(41.313mm,65.81mm) on TO [TO] to [TS] clearance [0.15mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.125mm < 0.254mm) Between Pad C2-2(40.513mm,66.31mm) on TL And Track (41.313mm,65.81mm)(41.313mm,66.81mm) on TO [TO] to [TS] clearance [0.125mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.125mm < 0.254mm) Between Pad C3-1(35.56mm,68.31mm) on TL And Track (34.76mm,67.81mm)(34.76mm,68.81mm) on TO [TO] to [TS] clearance [0.125mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.15mm < 0.254mm) Between Pad C3-1(35.56mm,68.31mm) on TL And Track (34.76mm,68.81mm)(36.36mm,68.81mm) on TO [TO] to [TS] clearance [0.15mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.125mm < 0.254mm) Between Pad C3-1(35.56mm,68.31mm) on TL And Track (36.36mm,67.81mm)(36.36mm,68.81mm) on TO [TO] to [TS] clearance [0.125mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.125mm < 0.254mm) Between Pad C3-2(35.56mm,66.31mm) on TL And Track (34.76mm,65.81mm)(34.76mm,66.81mm) on TO [TO] to [TS] clearance [0.125mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.15mm < 0.254mm) Between Pad C3-2(35.56mm,66.31mm) on TL And Track (34.76mm,65.81mm)(36.36mm,65.81mm) on TO [TO] to [TS] clearance [0.15mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.125mm < 0.254mm) Between Pad C3-2(35.56mm,66.31mm) on TL And Track (36.36mm,65.81mm)(36.36mm,66.81mm) on TO [TO] to [TS] clearance [0.125mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Pad C6-1(49.006mm,43.688mm) on TL And Text "R6" (46.838mm,42.545mm) on TO [TO] to [TS] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.125mm < 0.254mm) Between Pad C6-1(49.006mm,43.688mm) on TL And Track (48.506mm,42.888mm)(49.506mm,42.888mm) on TO [TO] to [TS] clearance [0.125mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.125mm < 0.254mm) Between Pad C6-1(49.006mm,43.688mm) on TL And Track (48.506mm,44.488mm)(49.506mm,44.488mm) on TO [TO] to [TS] clearance [0.125mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.15mm < 0.254mm) Between Pad C6-1(49.006mm,43.688mm) on TL And Track (49.506mm,42.888mm)(49.506mm,44.488mm) on TO [TO] to [TS] clearance [0.15mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Pad C6-2(47.006mm,43.688mm) on TL And Text "R6" (46.838mm,42.545mm) on TO [TO] to [TS] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.15mm < 0.254mm) Between Pad C6-2(47.006mm,43.688mm) on TL And Track (46.506mm,42.888mm)(46.506mm,44.488mm) on TO [TO] to [TS] clearance [0.15mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.125mm < 0.254mm) Between Pad C6-2(47.006mm,43.688mm) on TL And Track (46.506mm,42.888mm)(47.506mm,42.888mm) on TO [TO] to [TS] clearance [0.125mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.125mm < 0.254mm) Between Pad C6-2(47.006mm,43.688mm) on TL And Track (46.506mm,44.488mm)(47.506mm,44.488mm) on TO [TO] to [TS] clearance [0.125mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.125mm < 0.254mm) Between Pad C7-1(52.578mm,64.151mm) on TL And Track (51.778mm,63.651mm)(51.778mm,64.651mm) on TO [TO] to [TS] clearance [0.125mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.15mm < 0.254mm) Between Pad C7-1(52.578mm,64.151mm) on TL And Track (51.778mm,63.651mm)(53.378mm,63.651mm) on TO [TO] to [TS] clearance [0.15mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.125mm < 0.254mm) Between Pad C7-1(52.578mm,64.151mm) on TL And Track (53.378mm,63.651mm)(53.378mm,64.651mm) on TO [TO] to [TS] clearance [0.125mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.125mm < 0.254mm) Between Pad C7-2(52.578mm,66.151mm) on TL And Track (51.778mm,65.651mm)(51.778mm,66.651mm) on TO [TO] to [TS] clearance [0.125mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.15mm < 0.254mm) Between Pad C7-2(52.578mm,66.151mm) on TL And Track (51.778mm,66.651mm)(53.378mm,66.651mm) on TO [TO] to [TS] clearance [0.15mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.125mm < 0.254mm) Between Pad C7-2(52.578mm,66.151mm) on TL And Track (53.378mm,65.651mm)(53.378mm,66.651mm) on TO [TO] to [TS] clearance [0.125mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.215mm < 0.254mm) Between Pad D1-2(88.75mm,26.21mm) on Multi-Layer And Track (87.551mm,25.786mm)(87.8mm,25.786mm) on TO [TO] to [TS] clearance [0.215mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.215mm < 0.254mm) Between Pad D1-2(88.75mm,26.21mm) on Multi-Layer And Track (89.7mm,25.786mm)(89.949mm,25.786mm) on TO [TO] to [TS] clearance [0.215mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.215mm < 0.254mm) Between Pad D2-2(62.5mm,25.29mm) on Multi-Layer And Track (61.301mm,25.714mm)(61.55mm,25.714mm) on TO [TO] to [TS] clearance [0.215mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.215mm < 0.254mm) Between Pad D2-2(62.5mm,25.29mm) on Multi-Layer And Track (63.45mm,25.714mm)(63.699mm,25.714mm) on TO [TO] to [TS] clearance [0.215mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Pad IC1-20(39.243mm,46.736mm) on Multi-Layer And Text "L1" (39.014mm,45.339mm) on TO [TO] to [TS] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.164mm < 0.254mm) Between Pad IC1-21(41.783mm,46.736mm) on Multi-Layer And Text "L1" (39.014mm,45.339mm) on TO [TO] to [TS] clearance [0.164mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Pad IC1-23(46.863mm,46.736mm) on Multi-Layer And Text "C6" (46.711mm,45.288mm) on TO [TO] to [TS] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Pad IC1-24(49.403mm,46.736mm) on Multi-Layer And Text "C6" (46.711mm,45.288mm) on TO [TO] to [TS] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Pad L1-1(39.9mm,43.434mm) on TL And Text "C1" (39.853mm,42.494mm) on TO [TO] to [TS] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.018mm < 0.254mm) Between Pad L1-2(42.65mm,43.434mm) on TL And Text "C1" (39.853mm,42.494mm) on TO [TO] to [TS] clearance [0.018mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.2mm < 0.254mm) Between Pad R1-1(83mm,27mm) on TL And Track (82.425mm,27.725mm)(82.425mm,27.925mm) on TO [TO] to [TS] clearance [0.2mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.2mm < 0.254mm) Between Pad R1-1(83mm,27mm) on TL And Track (83.575mm,27.725mm)(83.575mm,27.925mm) on TO [TO] to [TS] clearance [0.2mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.2mm < 0.254mm) Between Pad R1-2(83mm,28.65mm) on TL And Track (82.425mm,27.725mm)(82.425mm,27.925mm) on TO [TO] to [TS] clearance [0.2mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.2mm < 0.254mm) Between Pad R1-2(83mm,28.65mm) on TL And Track (83.575mm,27.725mm)(83.575mm,27.925mm) on TO [TO] to [TS] clearance [0.2mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.2mm < 0.254mm) Between Pad R2-1(56.769mm,21.336mm) on TL And Track (56.194mm,22.061mm)(56.194mm,22.261mm) on TO [TO] to [TS] clearance [0.2mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.2mm < 0.254mm) Between Pad R2-1(56.769mm,21.336mm) on TL And Track (57.344mm,22.061mm)(57.344mm,22.261mm) on TO [TO] to [TS] clearance [0.2mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.2mm < 0.254mm) Between Pad R2-2(56.769mm,22.986mm) on TL And Track (56.194mm,22.061mm)(56.194mm,22.261mm) on TO [TO] to [TS] clearance [0.2mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.2mm < 0.254mm) Between Pad R2-2(56.769mm,22.986mm) on TL And Track (57.344mm,22.061mm)(57.344mm,22.261mm) on TO [TO] to [TS] clearance [0.2mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.2mm < 0.254mm) Between Pad R4-1(41.825mm,85.75mm) on TL And Track (40.9mm,85.175mm)(41.1mm,85.175mm) on TO [TO] to [TS] clearance [0.2mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.2mm < 0.254mm) Between Pad R4-1(41.825mm,85.75mm) on TL And Track (40.9mm,86.325mm)(41.1mm,86.325mm) on TO [TO] to [TS] clearance [0.2mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.2mm < 0.254mm) Between Pad R4-2(40.175mm,85.75mm) on TL And Track (40.9mm,85.175mm)(41.1mm,85.175mm) on TO [TO] to [TS] clearance [0.2mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.2mm < 0.254mm) Between Pad R4-2(40.175mm,85.75mm) on TL And Track (40.9mm,86.325mm)(41.1mm,86.325mm) on TO [TO] to [TS] clearance [0.2mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.185mm < 0.254mm) Between Pad R6-1(50.292mm,40.64mm) on TL And Text "R5" (46.863mm,39.878mm) on TO [TO] to [TS] clearance [0.185mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.254mm) Between Pad R6-2(47.44mm,40.64mm) on TL And Text "R5" (46.863mm,39.878mm) on TO [TO] to [TS] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.2mm < 0.254mm) Between Pad R7-1(59.563mm,59.245mm) on TL And Track (58.988mm,58.32mm)(58.988mm,58.52mm) on TO [TO] to [TS] clearance [0.2mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.2mm < 0.254mm) Between Pad R7-1(59.563mm,59.245mm) on TL And Track (60.138mm,58.32mm)(60.138mm,58.52mm) on TO [TO] to [TS] clearance [0.2mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.2mm < 0.254mm) Between Pad R7-2(59.563mm,57.595mm) on TL And Track (58.988mm,58.32mm)(58.988mm,58.52mm) on TO [TO] to [TS] clearance [0.2mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.2mm < 0.254mm) Between Pad R7-2(59.563mm,57.595mm) on TL And Track (60.138mm,58.32mm)(60.138mm,58.52mm) on TO [TO] to [TS] clearance [0.2mm]
+Rule Violations :64
+
+Processing Rule : Silk to Silk (Clearance=0.254mm) (All),(All)
+   Violation between Silk To Silk Clearance Constraint: (0.038mm < 0.254mm) Between Text "2.81" (98.657mm,125.188mm) on TO And Track (94.996mm,130mm)(97.536mm,130mm) on TO Silk Text to Silk Clearance [0.038mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.254mm) Between Text "2.90" (90.475mm,131.828mm) on TO And Track (95mm,129.413mm)(95mm,131.953mm) on TO Silk Text to Silk Clearance [0mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.254mm) Between Text "C1" (39.853mm,42.494mm) on TO And Track (41.127mm,42.384mm)(41.423mm,42.384mm) on TO Silk Text to Silk Clearance [0mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.254mm) Between Text "C7" (51.994mm,67.462mm) on TO And Track (51.328mm,68.981mm)(66.632mm,68.981mm) on TO Silk Text to Silk Clearance [0mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.254mm) Between Text "R4" (39.878mm,87.376mm) on TO And Track (8.015mm,88.176mm)(79.615mm,88.176mm) on TO Silk Text to Silk Clearance [0mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.254mm) Between Text "R5" (46.863mm,39.878mm) on TO And Track (48.393mm,39.84mm)(49.339mm,39.84mm) on TO Silk Text to Silk Clearance [0mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.254mm) Between Text "R5" (46.863mm,39.878mm) on TO And Track (48.393mm,41.44mm)(49.339mm,41.44mm) on TO Silk Text to Silk Clearance [0mm]
+   Violation between Silk To Silk Clearance Constraint: (0.155mm < 0.254mm) Between Text "R6" (46.838mm,42.545mm) on TO And Track (46.506mm,42.888mm)(46.506mm,44.488mm) on TO Silk Text to Silk Clearance [0.155mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.254mm) Between Text "R6" (46.838mm,42.545mm) on TO And Track (46.506mm,42.888mm)(47.506mm,42.888mm) on TO Silk Text to Silk Clearance [0mm]
+   Violation between Silk To Silk Clearance Constraint: (0.242mm < 0.254mm) Between Text "R6" (46.838mm,42.545mm) on TO And Track (46.506mm,44.488mm)(47.506mm,44.488mm) on TO Silk Text to Silk Clearance [0.242mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.254mm) Between Text "R6" (46.838mm,42.545mm) on TO And Track (48.506mm,42.888mm)(49.506mm,42.888mm) on TO Silk Text to Silk Clearance [0mm]
+   Violation between Silk To Silk Clearance Constraint: (0.242mm < 0.254mm) Between Text "R6" (46.838mm,42.545mm) on TO And Track (48.506mm,44.488mm)(49.506mm,44.488mm) on TO Silk Text to Silk Clearance [0.242mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.254mm) Between Text "R6" (46.838mm,42.545mm) on TO And Track (49.506mm,42.888mm)(49.506mm,44.488mm) on TO Silk Text to Silk Clearance [0mm]
+   Violation between Silk To Silk Clearance Constraint: (0.192mm < 0.254mm) Between Text "Y1" (32.36mm,66.243mm) on TO And Track (34.76mm,65.81mm)(34.76mm,66.81mm) on TO Silk Text to Silk Clearance [0.192mm]
+Rule Violations :14
+
+Processing Rule : Net Antennae (Tolerance=0mm) (All)
+Rule Violations :0
+
+Processing Rule : Length Constraint (Min=0mm) (Max=160mm) (InNetClass('SPI'))
+Rule Violations :0
+
+Processing Rule : Matched Lengths(Tolerance=2mm) (InNetClass('SPI'))
+   Violation between Matched Net Lengths: Between Net SPI_CS And Net SPI_MISO Length:36.184mm is not within 2mm tolerance of Length:52.868mm (14.683mm short) 
+Rule Violations :1
+
+Processing Rule : Component Clearance Constraint ( Horizontal Gap = 0.254mm, Vertical Gap = 0.254mm ) (All),(All) 
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mm) (Max=70mm) (Prefered=12.7mm) (All)
+Rule Violations :0
+
+
+Violations Detected : 93
+Waived Violations : 0
+Time Elapsed        : 00:00:00

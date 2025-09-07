@@ -1,0 +1,7 @@
+# Altium temporary / generated files
+*.PrjPCBStructure
+*.log
+History/
+__Previews/
+Project Logs/
+

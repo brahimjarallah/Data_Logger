@@ -1,0 +1,635 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD25\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">9/7/2025</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">5:34:52 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc" class="file"><acronym title="Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc">Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">93</td></tr>
+</table>
+</td>
+</table><a name="IDYKYC34NUHE11C2RW5HWI1W0UJMMA101HQMTVFXEHWVAWLQO2FMPB"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDIQIWR2ONKGGYIZYB32W2YCGIWCA2ORO0SOSYEZHKCPCS4WXPB2UN">Clearance Constraint (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZROE5S1LVXFQFDU1OPHKKLHKRJWVXPBZELY22TXV4KVMJVNBU4M">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDVQUKLWKNGTREBRF0KSOFOCNHUBZL0GJNUCPQUCG2I23WXYBCGFR">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDPSSX44VEFQSCC4ANOQZHRY4SENAZUV0QXML5T0DQCFPWHL1REBVJ">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDSSHTS0GVS0CIB2TQHB3OKRJRIGWA5WPUQC5KXKKOKKRJ0GQJDIRJ">Width Constraint (Min=0.3mm) (Max=0.5mm) (Preferred=0.3mm) (All)</a></td>
+<td class="column2">14</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDR12AETIXEE5NDHP0KBV41AVF0KHMQVXBVJSJM5TV04KL1L2VPGM">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDUNWEW2WW3M15JGMRLZARVB4DBFIHDET53X2WVSLA1YP5IAQISCSB">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDVM2NWVIPLVTTP2GCP54CTTDFEFI4IXUYCVFSEFNNZAI2K3LCN3WF">Pads and Vias to follow the Drill pairs settings</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDIVNZFJBZRQDKLTFFNXOPBBFJAJ41UFWO2ZVEM3B2DLI4SFCH3BMM">Hole To Hole Clearance (Gap=0.3mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDCT5LIHCZH1PQC35UEZ5HUCQHJBLQDA432CTAF5J1CRO5IAVGBK1E">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID5J4SEG1UH2SMI3IIHJNBUYG4QEIWFOMYQPHJ55FKNWWIZYE1E2JN">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">64</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDUG1GZT4ACX3EBEHJMEVWO1SGWDXCGVCA25WIYZM0YY1TI2W3F3KM">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">14</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDXE1D2RX1PKFUGYFSW3TVCUZAELMUWGQQVCY44EMHQXFBJPHM0PJ">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDCFOCRKIAXPWYDNE3AXAFK4TAQGQNCQXBJD0EYWG1D1V25UQSKYUE">Length Constraint (Min=0mm) (Max=160mm) (InNetClass('SPI'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDHTLGCQFWS5MB2WHRD15XT2OEGE23DBEH2LUK1IM41J5KUHDACKD">Matched Lengths(Tolerance=2mm) (InNetClass('SPI'))</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDTTPVIJQJ3FM3EK1KIQUUTEX0GOBVR3RHV533XCBZ3TWNMQQLIEP">Component Clearance Constraint ( Horizontal Gap = 0.254mm, Vertical Gap = 0.254mm ) (All),(All) </a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDNTTTKCZQHSF4HNXZNSI1AY0UMKC0CAVZVH2CUWCGUKNXL5M2ZAKM">Height Constraint (Min=0mm) (Max=70mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">93</td>
+</tr>
+</table><br><a name="IDSSHTS0GVS0CIB2TQHB3OKRJRIGWA5WPUQC5KXKKOKKRJ0GQJDIRJ"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Width Constraint (Min=0.3mm) (Max=0.5mm) (Preferred=0.3mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3708.14mil|Location2.X=3721.72mil|Location1.Y=3651.591mil|Location2.Y=3666.191mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3708.14mil|Location2.X=3721.72mil|Location1.Y=3651.591mil|Location2.Y=3666.191mil|Absolute=True">Width Constraint: Track (31.623mm,54.356mm)(31.623mm,77.373mm) on BL Actual Width = 0.254mm, Target Width = 0.3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3804.504mil|Location2.X=3822.546mil|Location1.Y=4200.685mil|Location2.Y=4213.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3804.504mil|Location2.X=3822.546mil|Location1.Y=4200.685mil|Location2.Y=4213.685mil|Absolute=True">Width Constraint: Track (31.623mm,77.373mm)(36.5mm,82.25mm) on BL Actual Width = 0.254mm, Target Width = 0.3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4407.398mil|Location2.X=4427.478mil|Location1.Y=4296.689mil|Location2.Y=4309.689mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4407.398mil|Location2.X=4427.478mil|Location1.Y=4296.689mil|Location2.Y=4309.689mil|Absolute=True">Width Constraint: Track (36.5mm,82.25mm)(62.25mm,82.25mm) on BL Actual Width = 0.254mm, Target Width = 0.3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4050.66mil|Location2.X=4064.24mil|Location1.Y=4534.622mil|Location2.Y=4549.222mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4050.66mil|Location2.X=4064.24mil|Location1.Y=4534.622mil|Location2.Y=4549.222mil|Absolute=True">Width Constraint: Track (40.323mm,86.233mm)(40.323mm,90.354mm) on TL Actual Width = 0.254mm, Target Width = 0.3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4052.437mil|Location2.X=4070.479mil|Location1.Y=4617.161mil|Location2.Y=4630.161mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4052.437mil|Location2.X=4070.479mil|Location1.Y=4617.161mil|Location2.Y=4630.161mil|Absolute=True">Width Constraint: Track (40.323mm,90.354mm)(40.395mm,90.426mm) on TL Actual Width = 0.254mm, Target Width = 0.3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4313.77mil|Location2.X=4327.35mil|Location1.Y=2773.559mil|Location2.Y=2788.16mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4313.77mil|Location2.X=4327.35mil|Location1.Y=2773.559mil|Location2.Y=2788.16mil|Absolute=True">Width Constraint: Track (47.006mm,43.437mm)(47.006mm,43.688mm) on TL Actual Width = 0.254mm, Target Width = 0.3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4322.67mil|Location2.X=4340.811mil|Location1.Y=2760.079mil|Location2.Y=2773.079mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4322.67mil|Location2.X=4340.811mil|Location1.Y=2760.079mil|Location2.Y=2773.079mil|Absolute=True">Width Constraint: Track (47.006mm,43.437mm)(47.44mm,43.003mm) on TL Actual Width = 0.254mm, Target Width = 0.3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4330.85mil|Location2.X=4344.43mil|Location1.Y=2705.019mil|Location2.Y=2719.62mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4330.85mil|Location2.X=4344.43mil|Location1.Y=2705.019mil|Location2.Y=2719.62mil|Absolute=True">Width Constraint: Track (47.44mm,40.64mm)(47.44mm,43.003mm) on TL Actual Width = 0.254mm, Target Width = 0.3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4331.783mil|Location2.X=4349.923mil|Location1.Y=2657.927mil|Location2.Y=2670.927mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4331.783mil|Location2.X=4349.923mil|Location1.Y=2657.927mil|Location2.Y=2670.927mil|Absolute=True">Width Constraint: Track (47.44mm,40.64mm)(47.469mm,40.611mm) on TL Actual Width = 0.254mm, Target Width = 0.3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4331.995mil|Location2.X=4345.575mil|Location1.Y=2605.427mil|Location2.Y=2620.028mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4331.995mil|Location2.X=4345.575mil|Location1.Y=2605.427mil|Location2.Y=2620.028mil|Absolute=True">Width Constraint: Track (47.469mm,37.973mm)(47.469mm,40.611mm) on TL Actual Width = 0.254mm, Target Width = 0.3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4533.14mil|Location2.X=4546.72mil|Location1.Y=3743.185mil|Location2.Y=3757.785mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4533.14mil|Location2.X=4546.72mil|Location1.Y=3743.185mil|Location2.Y=3757.785mil|Absolute=True">Width Constraint: Track (52.578mm,66.151mm)(52.578mm,70.231mm) on TL Actual Width = 0.254mm, Target Width = 0.3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4533.501mil|Location2.X=4551.542mil|Location1.Y=3823.5mil|Location2.Y=3836.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4533.501mil|Location2.X=4551.542mil|Location1.Y=3823.5mil|Location2.Y=3836.5mil|Absolute=True">Width Constraint: Track (52.578mm,70.231mm)(52.578mm,70.231mm) on TL Actual Width = 0.254mm, Target Width = 0.3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4934.071mil|Location2.X=4952.113mil|Location1.Y=4316.472mil|Location2.Y=4329.472mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4934.071mil|Location2.X=4952.113mil|Location1.Y=4316.472mil|Location2.Y=4329.472mil|Absolute=True">Width Constraint: Track (62.25mm,82.25mm)(63.255mm,83.255mm) on BL Actual Width = 0.254mm, Target Width = 0.3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4953.494mil|Location2.X=4967.074mil|Location1.Y=4477.417mil|Location2.Y=4492.017mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4953.494mil|Location2.X=4967.074mil|Location1.Y=4477.417mil|Location2.Y=4492.017mil|Absolute=True">Width Constraint: Track (63.255mm,83.255mm)(63.255mm,90.426mm) on BL Actual Width = 0.254mm, Target Width = 0.3mm</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID5J4SEG1UH2SMI3IIHJNBUYG4QEIWFOMYQPHJ55FKNWWIZYE1E2JN"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4948.578mil|Location2.X=4959.828mil|Location1.Y=1931.229mil|Location2.Y=1942.479mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4948.578mil|Location2.X=4959.828mil|Location1.Y=1931.229mil|Location2.Y=1942.479mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.202mm &lt; 0.254mm) Between Arc (62.5mm,23.99mm) on TO And Pad D2-1(62.5mm,22.75mm) on Multi-Layer [TO] to [TS] clearance [0.202mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4901.432mil|Location2.X=4912.682mil|Location1.Y=1931.229mil|Location2.Y=1942.479mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4901.432mil|Location2.X=4912.682mil|Location1.Y=1931.229mil|Location2.Y=1942.479mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.202mm &lt; 0.254mm) Between Arc (62.5mm,23.99mm) on TO And Pad D2-1(62.5mm,22.75mm) on Multi-Layer [TO] to [TS] clearance [0.202mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5982.043mil|Location2.X=5993.293mil|Location1.Y=2215.08mil|Location2.Y=2226.33mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5982.043mil|Location2.X=5993.293mil|Location1.Y=2215.08mil|Location2.Y=2226.33mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.202mm &lt; 0.254mm) Between Arc (88.75mm,27.51mm) on TO And Pad D1-1(88.75mm,28.75mm) on Multi-Layer [TO] to [TS] clearance [0.202mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5934.896mil|Location2.X=5946.146mil|Location1.Y=2215.08mil|Location2.Y=2226.33mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5934.896mil|Location2.X=5946.146mil|Location1.Y=2215.08mil|Location2.Y=2226.33mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.202mm &lt; 0.254mm) Between Arc (88.75mm,27.51mm) on TO And Pad D1-1(88.75mm,28.75mm) on Multi-Layer [TO] to [TS] clearance [0.202mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4128.666mil|Location2.X=4139.916mil|Location1.Y=2642.306mil|Location2.Y=2653.556mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4128.666mil|Location2.X=4139.916mil|Location1.Y=2642.306mil|Location2.Y=2653.556mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.125mm &lt; 0.254mm) Between Pad C1-1(42.148mm,40.894mm) on TL And Track (41.648mm,40.094mm)(42.648mm,40.094mm) on TO [TO] to [TS] clearance [0.125mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4114.887mil|Location2.X=4126.137mil|Location1.Y=2696.444mil|Location2.Y=2707.694mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4114.887mil|Location2.X=4126.137mil|Location1.Y=2696.444mil|Location2.Y=2707.694mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.125mm &lt; 0.254mm) Between Pad C1-1(42.148mm,40.894mm) on TL And Track (41.648mm,41.694mm)(42.648mm,41.694mm) on TO [TO] to [TS] clearance [0.125mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4138.511mil|Location2.X=4149.761mil|Location1.Y=2651.659mil|Location2.Y=2662.909mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4138.511mil|Location2.X=4149.761mil|Location1.Y=2651.659mil|Location2.Y=2662.909mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C1-1(42.148mm,40.894mm) on TL And Track (42.648mm,40.094mm)(42.648mm,41.694mm) on TO [TO] to [TS] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4030.239mil|Location2.X=4041.489mil|Location1.Y=2651.659mil|Location2.Y=2662.909mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4030.239mil|Location2.X=4041.489mil|Location1.Y=2651.659mil|Location2.Y=2662.909mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C1-2(40.148mm,40.894mm) on TL And Track (39.648mm,40.094mm)(39.648mm,41.694mm) on TO [TO] to [TS] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4053.863mil|Location2.X=4065.113mil|Location1.Y=2642.306mil|Location2.Y=2653.556mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4053.863mil|Location2.X=4065.113mil|Location1.Y=2642.306mil|Location2.Y=2653.556mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.125mm &lt; 0.254mm) Between Pad C1-2(40.148mm,40.894mm) on TL And Track (39.648mm,40.094mm)(40.648mm,40.094mm) on TO [TO] to [TS] clearance [0.125mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4040.084mil|Location2.X=4051.334mil|Location1.Y=2696.444mil|Location2.Y=2707.694mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4040.084mil|Location2.X=4051.334mil|Location1.Y=2696.444mil|Location2.Y=2707.694mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.125mm &lt; 0.254mm) Between Pad C1-2(40.148mm,40.894mm) on TL And Track (39.648mm,41.694mm)(40.648mm,41.694mm) on TO [TO] to [TS] clearance [0.125mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4032.306mil|Location2.X=4043.556mil|Location1.Y=3739.887mil|Location2.Y=3751.137mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4032.306mil|Location2.X=4043.556mil|Location1.Y=3739.887mil|Location2.Y=3751.137mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.125mm &lt; 0.254mm) Between Pad C2-1(40.513mm,68.31mm) on TL And Track (39.713mm,67.81mm)(39.713mm,68.81mm) on TO [TO] to [TS] clearance [0.125mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4041.659mil|Location2.X=4052.909mil|Location1.Y=3763.511mil|Location2.Y=3774.761mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4041.659mil|Location2.X=4052.909mil|Location1.Y=3763.511mil|Location2.Y=3774.761mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C2-1(40.513mm,68.31mm) on TL And Track (39.713mm,68.81mm)(41.313mm,68.81mm) on TO [TO] to [TS] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4086.444mil|Location2.X=4097.694mil|Location1.Y=3739.887mil|Location2.Y=3751.137mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4086.444mil|Location2.X=4097.694mil|Location1.Y=3739.887mil|Location2.Y=3751.137mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.125mm &lt; 0.254mm) Between Pad C2-1(40.513mm,68.31mm) on TL And Track (41.313mm,67.81mm)(41.313mm,68.81mm) on TO [TO] to [TS] clearance [0.125mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4032.306mil|Location2.X=4043.556mil|Location1.Y=3665.084mil|Location2.Y=3676.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4032.306mil|Location2.X=4043.556mil|Location1.Y=3665.084mil|Location2.Y=3676.334mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.125mm &lt; 0.254mm) Between Pad C2-2(40.513mm,66.31mm) on TL And Track (39.713mm,65.81mm)(39.713mm,66.81mm) on TO [TO] to [TS] clearance [0.125mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4077.091mil|Location2.X=4088.341mil|Location1.Y=3655.239mil|Location2.Y=3666.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4077.091mil|Location2.X=4088.341mil|Location1.Y=3655.239mil|Location2.Y=3666.489mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C2-2(40.513mm,66.31mm) on TL And Track (39.713mm,65.81mm)(41.313mm,65.81mm) on TO [TO] to [TS] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4086.444mil|Location2.X=4097.694mil|Location1.Y=3665.084mil|Location2.Y=3676.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4086.444mil|Location2.X=4097.694mil|Location1.Y=3665.084mil|Location2.Y=3676.334mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.125mm &lt; 0.254mm) Between Pad C2-2(40.513mm,66.31mm) on TL And Track (41.313mm,65.81mm)(41.313mm,66.81mm) on TO [TO] to [TS] clearance [0.125mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3837.306mil|Location2.X=3848.556mil|Location1.Y=3739.887mil|Location2.Y=3751.137mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3837.306mil|Location2.X=3848.556mil|Location1.Y=3739.887mil|Location2.Y=3751.137mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.125mm &lt; 0.254mm) Between Pad C3-1(35.56mm,68.31mm) on TL And Track (34.76mm,67.81mm)(34.76mm,68.81mm) on TO [TO] to [TS] clearance [0.125mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3846.659mil|Location2.X=3857.909mil|Location1.Y=3763.511mil|Location2.Y=3774.761mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3846.659mil|Location2.X=3857.909mil|Location1.Y=3763.511mil|Location2.Y=3774.761mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C3-1(35.56mm,68.31mm) on TL And Track (34.76mm,68.81mm)(36.36mm,68.81mm) on TO [TO] to [TS] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3891.444mil|Location2.X=3902.694mil|Location1.Y=3739.887mil|Location2.Y=3751.137mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3891.444mil|Location2.X=3902.694mil|Location1.Y=3739.887mil|Location2.Y=3751.137mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.125mm &lt; 0.254mm) Between Pad C3-1(35.56mm,68.31mm) on TL And Track (36.36mm,67.81mm)(36.36mm,68.81mm) on TO [TO] to [TS] clearance [0.125mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3837.306mil|Location2.X=3848.556mil|Location1.Y=3665.084mil|Location2.Y=3676.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3837.306mil|Location2.X=3848.556mil|Location1.Y=3665.084mil|Location2.Y=3676.334mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.125mm &lt; 0.254mm) Between Pad C3-2(35.56mm,66.31mm) on TL And Track (34.76mm,65.81mm)(34.76mm,66.81mm) on TO [TO] to [TS] clearance [0.125mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3882.091mil|Location2.X=3893.341mil|Location1.Y=3655.239mil|Location2.Y=3666.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3882.091mil|Location2.X=3893.341mil|Location1.Y=3655.239mil|Location2.Y=3666.489mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C3-2(35.56mm,66.31mm) on TL And Track (34.76mm,65.81mm)(36.36mm,65.81mm) on TO [TO] to [TS] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3891.444mil|Location2.X=3902.694mil|Location1.Y=3665.084mil|Location2.Y=3676.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3891.444mil|Location2.X=3902.694mil|Location1.Y=3665.084mil|Location2.Y=3676.334mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.125mm &lt; 0.254mm) Between Pad C3-2(35.56mm,66.31mm) on TL And Track (36.36mm,65.81mm)(36.36mm,66.81mm) on TO [TO] to [TS] clearance [0.125mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4407.352mil|Location2.X=4415.019mil|Location1.Y=2794.756mil|Location2.Y=2802.423mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4407.352mil|Location2.X=4415.019mil|Location1.Y=2794.756mil|Location2.Y=2802.423mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C6-1(49.006mm,43.688mm) on TL And Text "R6" (46.838mm,42.545mm) on TO [TO] to [TS] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4398.666mil|Location2.X=4409.916mil|Location1.Y=2752.306mil|Location2.Y=2763.556mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4398.666mil|Location2.X=4409.916mil|Location1.Y=2752.306mil|Location2.Y=2763.556mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.125mm &lt; 0.254mm) Between Pad C6-1(49.006mm,43.688mm) on TL And Track (48.506mm,42.888mm)(49.506mm,42.888mm) on TO [TO] to [TS] clearance [0.125mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4384.887mil|Location2.X=4396.137mil|Location1.Y=2806.444mil|Location2.Y=2817.694mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4384.887mil|Location2.X=4396.137mil|Location1.Y=2806.444mil|Location2.Y=2817.694mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.125mm &lt; 0.254mm) Between Pad C6-1(49.006mm,43.688mm) on TL And Track (48.506mm,44.488mm)(49.506mm,44.488mm) on TO [TO] to [TS] clearance [0.125mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4408.511mil|Location2.X=4419.761mil|Location1.Y=2761.659mil|Location2.Y=2772.909mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4408.511mil|Location2.X=4419.761mil|Location1.Y=2761.659mil|Location2.Y=2772.909mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C6-1(49.006mm,43.688mm) on TL And Track (49.506mm,42.888mm)(49.506mm,44.488mm) on TO [TO] to [TS] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4310.167mil|Location2.X=4317.833mil|Location1.Y=2761.508mil|Location2.Y=2769.175mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4310.167mil|Location2.X=4317.833mil|Location1.Y=2761.508mil|Location2.Y=2769.175mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C6-2(47.006mm,43.688mm) on TL And Text "R6" (46.838mm,42.545mm) on TO [TO] to [TS] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4300.239mil|Location2.X=4311.489mil|Location1.Y=2761.659mil|Location2.Y=2772.909mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4300.239mil|Location2.X=4311.489mil|Location1.Y=2761.659mil|Location2.Y=2772.909mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C6-2(47.006mm,43.688mm) on TL And Track (46.506mm,42.888mm)(46.506mm,44.488mm) on TO [TO] to [TS] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4323.863mil|Location2.X=4335.113mil|Location1.Y=2752.306mil|Location2.Y=2763.556mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4323.863mil|Location2.X=4335.113mil|Location1.Y=2752.306mil|Location2.Y=2763.556mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.125mm &lt; 0.254mm) Between Pad C6-2(47.006mm,43.688mm) on TL And Track (46.506mm,42.888mm)(47.506mm,42.888mm) on TO [TO] to [TS] clearance [0.125mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4310.084mil|Location2.X=4321.334mil|Location1.Y=2806.444mil|Location2.Y=2817.694mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4310.084mil|Location2.X=4321.334mil|Location1.Y=2806.444mil|Location2.Y=2817.694mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.125mm &lt; 0.254mm) Between Pad C6-2(47.006mm,43.688mm) on TL And Track (46.506mm,44.488mm)(47.506mm,44.488mm) on TO [TO] to [TS] clearance [0.125mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4507.306mil|Location2.X=4518.556mil|Location1.Y=3580.084mil|Location2.Y=3591.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4507.306mil|Location2.X=4518.556mil|Location1.Y=3580.084mil|Location2.Y=3591.334mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.125mm &lt; 0.254mm) Between Pad C7-1(52.578mm,64.151mm) on TL And Track (51.778mm,63.651mm)(51.778mm,64.651mm) on TO [TO] to [TS] clearance [0.125mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4552.092mil|Location2.X=4563.342mil|Location1.Y=3570.239mil|Location2.Y=3581.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4552.092mil|Location2.X=4563.342mil|Location1.Y=3570.239mil|Location2.Y=3581.489mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C7-1(52.578mm,64.151mm) on TL And Track (51.778mm,63.651mm)(53.378mm,63.651mm) on TO [TO] to [TS] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4561.444mil|Location2.X=4572.694mil|Location1.Y=3580.084mil|Location2.Y=3591.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4561.444mil|Location2.X=4572.694mil|Location1.Y=3580.084mil|Location2.Y=3591.334mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.125mm &lt; 0.254mm) Between Pad C7-1(52.578mm,64.151mm) on TL And Track (53.378mm,63.651mm)(53.378mm,64.651mm) on TO [TO] to [TS] clearance [0.125mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4507.306mil|Location2.X=4518.556mil|Location1.Y=3654.887mil|Location2.Y=3666.137mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4507.306mil|Location2.X=4518.556mil|Location1.Y=3654.887mil|Location2.Y=3666.137mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.125mm &lt; 0.254mm) Between Pad C7-2(52.578mm,66.151mm) on TL And Track (51.778mm,65.651mm)(51.778mm,66.651mm) on TO [TO] to [TS] clearance [0.125mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4516.658mil|Location2.X=4527.908mil|Location1.Y=3678.511mil|Location2.Y=3689.761mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4516.658mil|Location2.X=4527.908mil|Location1.Y=3678.511mil|Location2.Y=3689.761mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad C7-2(52.578mm,66.151mm) on TL And Track (51.778mm,66.651mm)(53.378mm,66.651mm) on TO [TO] to [TS] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4561.444mil|Location2.X=4572.694mil|Location1.Y=3654.887mil|Location2.Y=3666.137mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4561.444mil|Location2.X=4572.694mil|Location1.Y=3654.887mil|Location2.Y=3666.137mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.125mm &lt; 0.254mm) Between Pad C7-2(52.578mm,66.151mm) on TL And Track (53.378mm,65.651mm)(53.378mm,66.651mm) on TO [TO] to [TS] clearance [0.125mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5927.653mil|Location2.X=5938.903mil|Location1.Y=2075.525mil|Location2.Y=2088.7mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5927.653mil|Location2.X=5938.903mil|Location1.Y=2075.525mil|Location2.Y=2088.7mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.215mm &lt; 0.254mm) Between Pad D1-2(88.75mm,26.21mm) on Multi-Layer And Track (87.551mm,25.786mm)(87.8mm,25.786mm) on TO [TO] to [TS] clearance [0.215mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5989.286mil|Location2.X=6000.536mil|Location1.Y=2077.45mil|Location2.Y=2090.666mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5989.286mil|Location2.X=6000.536mil|Location1.Y=2077.45mil|Location2.Y=2090.666mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.215mm &lt; 0.254mm) Between Pad D1-2(88.75mm,26.21mm) on Multi-Layer And Track (89.7mm,25.786mm)(89.949mm,25.786mm) on TO [TO] to [TS] clearance [0.215mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4894.188mil|Location2.X=4905.438mil|Location1.Y=2068.858mil|Location2.Y=2082.074mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4894.188mil|Location2.X=4905.438mil|Location1.Y=2068.858mil|Location2.Y=2082.074mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.215mm &lt; 0.254mm) Between Pad D2-2(62.5mm,25.29mm) on Multi-Layer And Track (61.301mm,25.714mm)(61.55mm,25.714mm) on TO [TO] to [TS] clearance [0.215mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4955.821mil|Location2.X=4967.071mil|Location1.Y=2066.933mil|Location2.Y=2080.108mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4955.821mil|Location2.X=4967.071mil|Location1.Y=2066.933mil|Location2.Y=2080.108mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.215mm &lt; 0.254mm) Between Pad D2-2(62.5mm,25.29mm) on Multi-Layer And Track (63.45mm,25.714mm)(63.699mm,25.714mm) on TO [TO] to [TS] clearance [0.215mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4002.167mil|Location2.X=4009.833mil|Location1.Y=2874.047mil|Location2.Y=2881.713mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4002.167mil|Location2.X=4009.833mil|Location1.Y=2874.047mil|Location2.Y=2881.713mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad IC1-20(39.243mm,46.736mm) on Multi-Layer And Text "L1" (39.014mm,45.339mm) on TO [TO] to [TS] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4078.578mil|Location2.X=4089.828mil|Location1.Y=2899.375mil|Location2.Y=2910.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4078.578mil|Location2.X=4089.828mil|Location1.Y=2899.375mil|Location2.Y=2910.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.164mm &lt; 0.254mm) Between Pad IC1-21(41.783mm,46.736mm) on Multi-Layer And Text "L1" (39.014mm,45.339mm) on TO [TO] to [TS] clearance [0.164mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4341.337mil|Location2.X=4349.003mil|Location1.Y=2897.968mil|Location2.Y=2905.634mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4341.337mil|Location2.X=4349.003mil|Location1.Y=2897.968mil|Location2.Y=2905.634mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad IC1-23(46.863mm,46.736mm) on Multi-Layer And Text "C6" (46.711mm,45.288mm) on TO [TO] to [TS] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4385.542mil|Location2.X=4393.209mil|Location1.Y=2894.351mil|Location2.Y=2902.018mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4385.542mil|Location2.X=4393.209mil|Location1.Y=2894.351mil|Location2.Y=2902.018mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad IC1-24(49.403mm,46.736mm) on Multi-Layer And Text "C6" (46.711mm,45.288mm) on TO [TO] to [TS] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4071.482mil|Location2.X=4079.148mil|Location1.Y=2787.823mil|Location2.Y=2795.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4071.482mil|Location2.X=4079.148mil|Location1.Y=2787.823mil|Location2.Y=2795.489mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad L1-1(39.9mm,43.434mm) on TL And Text "C1" (39.853mm,42.494mm) on TO [TO] to [TS] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4108.706mil|Location2.X=4119.956mil|Location1.Y=2739.847mil|Location2.Y=2751.097mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4108.706mil|Location2.X=4119.956mil|Location1.Y=2739.847mil|Location2.Y=2751.097mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.018mm &lt; 0.254mm) Between Pad L1-2(42.65mm,43.434mm) on TL And Text "C1" (39.853mm,42.494mm) on TO [TO] to [TS] clearance [0.018mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5709.454mil|Location2.X=5720.704mil|Location1.Y=2143.036mil|Location2.Y=2154.286mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5709.454mil|Location2.X=5720.704mil|Location1.Y=2143.036mil|Location2.Y=2154.286mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R1-1(83mm,27mm) on TL And Track (82.425mm,27.725mm)(82.425mm,27.925mm) on TO [TO] to [TS] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5754.729mil|Location2.X=5765.979mil|Location1.Y=2143.036mil|Location2.Y=2154.286mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5754.729mil|Location2.X=5765.979mil|Location1.Y=2143.036mil|Location2.Y=2154.286mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R1-1(83mm,27mm) on TL And Track (83.575mm,27.725mm)(83.575mm,27.925mm) on TO [TO] to [TS] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5709.454mil|Location2.X=5720.704mil|Location1.Y=2166.658mil|Location2.Y=2177.908mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5709.454mil|Location2.X=5720.704mil|Location1.Y=2166.658mil|Location2.Y=2177.908mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R1-2(83mm,28.65mm) on TL And Track (82.425mm,27.725mm)(82.425mm,27.925mm) on TO [TO] to [TS] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5754.729mil|Location2.X=5765.979mil|Location1.Y=2166.658mil|Location2.Y=2177.908mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5754.729mil|Location2.X=5765.979mil|Location1.Y=2166.658mil|Location2.Y=2177.908mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R1-2(83mm,28.65mm) on TL And Track (83.575mm,27.725mm)(83.575mm,27.925mm) on TO [TO] to [TS] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4676.737mil|Location2.X=4687.987mil|Location1.Y=1920.044mil|Location2.Y=1931.294mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4676.737mil|Location2.X=4687.987mil|Location1.Y=1920.044mil|Location2.Y=1931.294mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R2-1(56.769mm,21.336mm) on TL And Track (56.194mm,22.061mm)(56.194mm,22.261mm) on TO [TO] to [TS] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4722.013mil|Location2.X=4733.263mil|Location1.Y=1920.044mil|Location2.Y=1931.294mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4722.013mil|Location2.X=4733.263mil|Location1.Y=1920.044mil|Location2.Y=1931.294mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R2-1(56.769mm,21.336mm) on TL And Track (57.344mm,22.061mm)(57.344mm,22.261mm) on TO [TO] to [TS] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4676.737mil|Location2.X=4687.987mil|Location1.Y=1943.666mil|Location2.Y=1954.916mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4676.737mil|Location2.X=4687.987mil|Location1.Y=1943.666mil|Location2.Y=1954.916mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R2-2(56.769mm,22.986mm) on TL And Track (56.194mm,22.061mm)(56.194mm,22.261mm) on TO [TO] to [TS] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4722.013mil|Location2.X=4733.263mil|Location1.Y=1943.666mil|Location2.Y=1954.916mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4722.013mil|Location2.X=4733.263mil|Location1.Y=1943.666mil|Location2.Y=1954.916mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R2-2(56.769mm,22.986mm) on TL And Track (57.344mm,22.061mm)(57.344mm,22.261mm) on TO [TO] to [TS] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4090.359mil|Location2.X=4101.609mil|Location1.Y=4412.721mil|Location2.Y=4423.971mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4090.359mil|Location2.X=4101.609mil|Location1.Y=4412.721mil|Location2.Y=4423.971mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R4-1(41.825mm,85.75mm) on TL And Track (40.9mm,85.175mm)(41.1mm,85.175mm) on TO [TO] to [TS] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4090.359mil|Location2.X=4101.609mil|Location1.Y=4457.997mil|Location2.Y=4469.247mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4090.359mil|Location2.X=4101.609mil|Location1.Y=4457.997mil|Location2.Y=4469.247mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R4-1(41.825mm,85.75mm) on TL And Track (40.9mm,86.325mm)(41.1mm,86.325mm) on TO [TO] to [TS] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4066.737mil|Location2.X=4077.987mil|Location1.Y=4412.721mil|Location2.Y=4423.971mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4066.737mil|Location2.X=4077.987mil|Location1.Y=4412.721mil|Location2.Y=4423.971mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R4-2(40.175mm,85.75mm) on TL And Track (40.9mm,85.175mm)(41.1mm,85.175mm) on TO [TO] to [TS] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4066.737mil|Location2.X=4077.987mil|Location1.Y=4457.997mil|Location2.Y=4469.247mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4066.737mil|Location2.X=4077.987mil|Location1.Y=4457.997mil|Location2.Y=4469.247mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R4-2(40.175mm,85.75mm) on TL And Track (40.9mm,86.325mm)(41.1mm,86.325mm) on TO [TO] to [TS] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4417.98mil|Location2.X=4429.23mil|Location1.Y=2689.356mil|Location2.Y=2700.606mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4417.98mil|Location2.X=4429.23mil|Location1.Y=2689.356mil|Location2.Y=2700.606mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.185mm &lt; 0.254mm) Between Pad R6-1(50.292mm,40.64mm) on TL And Text "R5" (46.863mm,39.878mm) on TO [TO] to [TS] clearance [0.185mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4311.167mil|Location2.X=4318.833mil|Location1.Y=2631.167mil|Location2.Y=2638.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4311.167mil|Location2.X=4318.833mil|Location1.Y=2631.167mil|Location2.Y=2638.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad R6-2(47.44mm,40.64mm) on TL And Text "R5" (46.863mm,39.878mm) on TO [TO] to [TS] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4786.737mil|Location2.X=4797.987mil|Location1.Y=3371.186mil|Location2.Y=3382.436mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4786.737mil|Location2.X=4797.987mil|Location1.Y=3371.186mil|Location2.Y=3382.436mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R7-1(59.563mm,59.245mm) on TL And Track (58.988mm,58.32mm)(58.988mm,58.52mm) on TO [TO] to [TS] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.013mil|Location2.X=4843.263mil|Location1.Y=3371.186mil|Location2.Y=3382.436mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.013mil|Location2.X=4843.263mil|Location1.Y=3371.186mil|Location2.Y=3382.436mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R7-1(59.563mm,59.245mm) on TL And Track (60.138mm,58.32mm)(60.138mm,58.52mm) on TO [TO] to [TS] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4786.737mil|Location2.X=4797.987mil|Location1.Y=3347.564mil|Location2.Y=3358.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4786.737mil|Location2.X=4797.987mil|Location1.Y=3347.564mil|Location2.Y=3358.814mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R7-2(59.563mm,57.595mm) on TL And Track (58.988mm,58.32mm)(58.988mm,58.52mm) on TO [TO] to [TS] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.013mil|Location2.X=4843.263mil|Location1.Y=3347.564mil|Location2.Y=3358.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.013mil|Location2.X=4843.263mil|Location1.Y=3347.564mil|Location2.Y=3358.814mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R7-2(59.563mm,57.595mm) on TL And Track (60.138mm,58.32mm)(60.138mm,58.52mm) on TO [TO] to [TS] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDUG1GZT4ACX3EBEHJMEVWO1SGWDXCGVCA25WIYZM0YY1TI2W3F3KM"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6288.513mil|Location2.X=6299.763mil|Location1.Y=6171.729mil|Location2.Y=6182.979mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6288.513mil|Location2.X=6299.763mil|Location1.Y=6171.729mil|Location2.Y=6182.979mil|Absolute=True">Silk To Silk Clearance Constraint: (0.038mm &lt; 0.254mm) Between Text "2.81" (98.657mm,125.188mm) on TO And Track (94.996mm,130mm)(97.536mm,130mm) on TO Silk Text to Silk Clearance [0.038mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6206.324mil|Location2.X=6213.991mil|Location1.Y=6251.257mil|Location2.Y=6258.924mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6206.324mil|Location2.X=6213.991mil|Location1.Y=6251.257mil|Location2.Y=6258.924mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "2.90" (90.475mm,131.828mm) on TO And Track (95mm,129.413mm)(95mm,131.953mm) on TO Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4095.147mil|Location2.X=4102.814mil|Location1.Y=2734.167mil|Location2.Y=2741.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4095.147mil|Location2.X=4102.814mil|Location1.Y=2734.167mil|Location2.Y=2741.833mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "C1" (39.853mm,42.494mm) on TO And Track (41.127mm,42.384mm)(41.423mm,42.384mm) on TO Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4543.35mil|Location2.X=4551.017mil|Location1.Y=3776.954mil|Location2.Y=3784.621mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4543.35mil|Location2.X=4551.017mil|Location1.Y=3776.954mil|Location2.Y=3784.621mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "C7" (51.994mm,67.462mm) on TO And Track (51.328mm,68.981mm)(66.632mm,68.981mm) on TO Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4036.167mil|Location2.X=4043.833mil|Location1.Y=4532.663mil|Location2.Y=4540.329mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4036.167mil|Location2.X=4043.833mil|Location1.Y=4532.663mil|Location2.Y=4540.329mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "R4" (39.878mm,87.376mm) on TO And Track (8.015mm,88.176mm)(79.615mm,88.176mm) on TO Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4401.138mil|Location2.X=4408.804mil|Location1.Y=2631.167mil|Location2.Y=2638.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4401.138mil|Location2.X=4408.804mil|Location1.Y=2631.167mil|Location2.Y=2638.833mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "R5" (46.863mm,39.878mm) on TO And Track (48.393mm,39.84mm)(49.339mm,39.84mm) on TO Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4371.398mil|Location2.X=4379.064mil|Location1.Y=2691.147mil|Location2.Y=2698.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4371.398mil|Location2.X=4379.064mil|Location1.Y=2691.147mil|Location2.Y=2698.814mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "R5" (46.863mm,39.878mm) on TO And Track (48.393mm,41.44mm)(49.339mm,41.44mm) on TO Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4300.332mil|Location2.X=4311.582mil|Location1.Y=2794.356mil|Location2.Y=2805.606mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4300.332mil|Location2.X=4311.582mil|Location1.Y=2794.356mil|Location2.Y=2805.606mil|Absolute=True">Silk To Silk Clearance Constraint: (0.155mm &lt; 0.254mm) Between Text "R6" (46.838mm,42.545mm) on TO And Track (46.506mm,42.888mm)(46.506mm,44.488mm) on TO Silk Text to Silk Clearance [0.155mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4310.167mil|Location2.X=4317.833mil|Location1.Y=2749.671mil|Location2.Y=2757.337mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4310.167mil|Location2.X=4317.833mil|Location1.Y=2749.671mil|Location2.Y=2757.337mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "R6" (46.838mm,42.545mm) on TO And Track (46.506mm,42.888mm)(47.506mm,42.888mm) on TO Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4308.375mil|Location2.X=4319.625mil|Location1.Y=2804.129mil|Location2.Y=2815.379mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4308.375mil|Location2.X=4319.625mil|Location1.Y=2804.129mil|Location2.Y=2815.379mil|Absolute=True">Silk To Silk Clearance Constraint: (0.242mm &lt; 0.254mm) Between Text "R6" (46.838mm,42.545mm) on TO And Track (46.506mm,44.488mm)(47.506mm,44.488mm) on TO Silk Text to Silk Clearance [0.242mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4370.147mil|Location2.X=4377.814mil|Location1.Y=2749.671mil|Location2.Y=2757.337mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4370.147mil|Location2.X=4377.814mil|Location1.Y=2749.671mil|Location2.Y=2757.337mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "R6" (46.838mm,42.545mm) on TO And Track (48.506mm,42.888mm)(49.506mm,42.888mm) on TO Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4408.343mil|Location2.X=4419.593mil|Location1.Y=2804.129mil|Location2.Y=2815.379mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4408.343mil|Location2.X=4419.593mil|Location1.Y=2804.129mil|Location2.Y=2815.379mil|Absolute=True">Silk To Silk Clearance Constraint: (0.242mm &lt; 0.254mm) Between Text "R6" (46.838mm,42.545mm) on TO And Track (48.506mm,44.488mm)(49.506mm,44.488mm) on TO Silk Text to Silk Clearance [0.242mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4410.134mil|Location2.X=4417.801mil|Location1.Y=2796.147mil|Location2.Y=2803.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4410.134mil|Location2.X=4417.801mil|Location1.Y=2796.147mil|Location2.Y=2803.814mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "R6" (46.838mm,42.545mm) on TO And Track (49.506mm,42.888mm)(49.506mm,44.488mm) on TO Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3827.13mil|Location2.X=3838.38mil|Location1.Y=3667.375mil|Location2.Y=3678.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3827.13mil|Location2.X=3838.38mil|Location1.Y=3667.375mil|Location2.Y=3678.625mil|Absolute=True">Silk To Silk Clearance Constraint: (0.192mm &lt; 0.254mm) Between Text "Y1" (32.36mm,66.243mm) on TO And Track (34.76mm,65.81mm)(34.76mm,66.81mm) on TO Silk Text to Silk Clearance [0.192mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDHTLGCQFWS5MB2WHRD15XT2OEGE23DBEH2LUK1IM41J5KUHDACKD"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Matched Lengths(Tolerance=2mm) (InNetClass('SPI'))</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2919.11mil|Location2.X=3846.559mil|Location1.Y=1539.11mil|Location2.Y=2936.559mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=Z:\tutorials\altium_tutorials\THAMEUR_FORMATION_ALTIUM\drive-download-20250529T172212Z-1-001\3. Projects\3.2 Altium Designer\P211_Data_Logger_Homework\P211_Data_Logger.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2919.11mil|Location2.X=3846.559mil|Location1.Y=1539.11mil|Location2.Y=2936.559mil|Absolute=True">Matched Net Lengths: Between Net SPI_CS And Net SPI_MISO Length:36.184mm is not within 2mm tolerance of Length:52.868mm (14.683mm short) </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
