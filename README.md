@@ -20,6 +20,19 @@ The design allows acquisition, storage, and transfer of sensor data for embedded
 - `Libraries/` – Custom component libraries  
 - `Outputs/` – Generated fabrication files (Gerber, BOM, 3D models, etc.)  
 
+## 🖼️ Preview
+
+### Schematic
+![Schematic](images/schematic1.png)
+![Schematic](images/schematic2.png)
+![Schematic](images/schematic3.png)
+
+### PCB (2D View)
+![PCB 2D](images/pcb_2d.png)
+
+### PCB (3D View)
+![PCB 3D](images/pcb_3d.png)
+
 ---
 
 ## 🚀 Usage
