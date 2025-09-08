@@ -23,9 +23,9 @@ The design allows acquisition, storage, and transfer of sensor data for embedded
 ## 🖼️ Preview
 
 ### Schematic
-![Schematic](images/schematic1.png)
-![Schematic](images/schematic2.png)
-![Schematic](images/schematic3.png)
+![Power_Supply](images/Power_Supply.png)
+![MCU](images/MCU.png)
+![Interfaces](images/Interfaces.png)
 
 ### PCB (2D View)
 ![PCB 2D](images/pcb_2d.png)
