@@ -22,12 +22,20 @@ The design allows acquisition, storage, and transfer of sensor data for embedded
 
 ## 🖼️ Preview
 
-### Schematic
+### Schematics
+
+#### Power_Supply
 ![Power_Supply](images/Power_Supply.png)
+
+#### MCU 
 ![MCU](images/MCU.png)
+
+#### Interfaces
 ![Interfaces](images/Interfaces.png)
 
+
 ### PCB (2D View)
+
 ![PCB 2D](images/pcb_2d.png)
 
 ### PCB (3D View)
@@ -37,6 +45,6 @@ The design allows acquisition, storage, and transfer of sensor data for embedded
 
 ## 🚀 Usage
 1. Clone this repository:
-   ```bash
+   ```
    git clone https://github.com/brahimjarallah/Data_Logger.git
-
+    ```
