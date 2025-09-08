@@ -1,7 +1,38 @@
-# Altium temporary / generated files
-*.PrjPCBStructure
-*.log
+# 🔹 Altium Designer temporary and cache files
+*.LOG
+*.TMP
+*.SAV
+*.Dat
+*.DchDocPreview
+*.PrjPcbStructure
+*.PcbDocPreview
+*.SchDocPreview
 History/
 __Previews/
-Project Logs/
+
+# 🔹 Backup and recovery files
+*.Bak
+*.Rvw
+*.db
+*.~*
+
+# 🔹 Simulation and compilation outputs
+*.ini
+*.cfg
+*.out
+*.err
+*.drc
+*.csv
+*.html
+
+# 🔹 Generated output directories
+OutputJob_Files/
+Project Outputs for*/
+Generated Documents/
+Compiled Documents/
+
+# 🔹 OS / Editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
 
