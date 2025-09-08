@@ -1,0 +1,25 @@
+Output: Gerber X2 Files
+Type  : GerberX2
+From  : Variant [[No Variations]] of Project [P211_Data_Logger.PrjPcb]
+   Generated File[P211_Data_Logger_Copper_Signal_Top.gbr]
+   Generated File[P211_Data_Logger_Copper_Signal_Bot.gbr]
+   Generated File[P211_Data_Logger_Legend_Top.gbr]
+   Generated File[P211_Data_Logger_Legend_Bot.gbr]
+   Generated File[P211_Data_Logger_Soldermask_Top.gbr]
+   Generated File[P211_Data_Logger_Soldermask_Bot.gbr]
+   Generated File[P211_Data_Logger_Paste_Top.gbr]
+   Generated File[P211_Data_Logger_Paste_Bot.gbr]
+   Generated File[P211_Data_Logger_M1.gbr]
+   Generated File[P211_Data_Logger_Fab_Notes.gbr]
+   Generated File[P211_Data_Logger_NPTH_Drill.gbr]
+   Generated File[P211_Data_Logger_PTH_Drill.gbr]
+   Generated File[P211_Data_Logger_Drawing_1.gbr]
+   Generated File[P211_Data_Logger_Drillmap_1.gbr]
+   Generated File[P211_Data_Logger.EXTREP]
+   Generated File[P211_Data_Logger.REP]
+
+
+Files Generated   : 16
+Documents Printed : 0
+
+Finished Output Generation At 7:44:14 PM On 9/8/2025
